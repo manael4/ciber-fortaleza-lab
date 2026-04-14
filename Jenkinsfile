@@ -18,9 +18,9 @@ pipeline {
 
         stage('Test (Control de Calidad)') {
             steps {
-                echo 'Auditoría de seguridad con PyBuilder...'
-                // MODIFICACIÓN CISO: Cambiamos 'python test.py' por 'pyb'
-                sh 'pyb'
+                echo 'Auditoría de seguridad con PyBuilder dentro del contenedor...'
+                // Ejecutamos pyb dentro de un contenedor temporal de la imagen que acabamos de buildear
+                sh 'docker run --rm bioguard-app pyb'
             }
         }
 
